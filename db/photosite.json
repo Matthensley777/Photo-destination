@@ -1,0 +1,130 @@
+{
+    "photos": {
+        "photo0": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "0",
+            "uId": ""
+        },
+        "photo1": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "1",
+            "uId": ""
+        },
+        "photo2": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "2",
+            "uId": ""
+        },
+        "photo3": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "3",
+            "uId": ""
+        },
+        "photo4": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "0",
+            "uId": ""
+        },
+        "photo5": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "1",
+            "uId": ""
+        },
+        "photo6": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "2",
+            "uId": ""
+        },
+        "photo7": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "3",
+            "uId": ""
+        },
+        "photo8": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "0",
+            "uId": ""
+        },
+        "photo9": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "1",
+            "uId": ""
+        },
+        "photo10": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "2",
+            "uId": ""
+        },
+        "photo11": {
+            "name": "",
+            "img_path": "",
+            "details": "",
+            "map_location": "",
+            "boardId": "3",
+            "uId": ""
+        }
+    },
+    "gallery": {
+        "gallery1": {
+            "name": "Landscapes",
+            "description": "Pictures of Landscapes",
+            "is_private": false,
+            "id": "0",
+            "uId": ""
+        },
+        "gallery2": {
+            "name": "Cityscapes",
+            "description": "Pictures of the City",
+            "is_private": false,
+            "id": "1",
+            "uId": ""
+        },
+        "gallery3": {
+            "name": "Portraits",
+            "description": "Pictures of People or Pets",
+            "is_private": false,
+            "id": "2",
+            "uId": ""
+        },
+        "gallery4": {
+            "name": "Still Lifes",
+            "description": "Things That Don't Move",
+            "is_private": false,
+            "id": "3",
+            "uId": ""
+        }
+    }
+}
