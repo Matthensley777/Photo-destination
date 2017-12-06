@@ -4,13 +4,14 @@
 	<div id="photos">
 		<div ng-repeat="photo in photos" class="col-sm-6 col-md-4 photo">
   			<div class="thumbnail">
+  				<button class="btn btn-default delete" ng-click="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
   				<img class="image_path" ng-src="{{photo.img_path}}" alt="">
- 						<h3 class="name">{{photo.name}}</h3>
-   							<p class="overview">{{photo.details}}</p>
+ 					<h3 class="name">{{photo.name}}</h3>
+   						<p class="overview">{{photo.details}}</p>
    							<p class="overview">{{photo.city}}</p>
-								</div>
-							 	 </div>
-							   		</div>
+			</div>
+		</div>
+	</div>
 
 	
 

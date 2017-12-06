@@ -11,4 +11,14 @@ const getUserPhotos = () => {
     };
 
 getUserPhotos();
-	});
+
+$scope.deletePhoto = (Id) => {
+    PhotoService.deletePhoto(Id).then((result) =>{
+      getUserPhotos();
+    }).catch((err) =>{
+      console.log("error in deletePhoto", err);
+    });
+  };
+
+
+});
