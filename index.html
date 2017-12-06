@@ -13,6 +13,9 @@
 </head>
 
 <body ng-app="PhotoApp">
+  <div ng-include="'./partials/navbar.html'"></div>
+  <div ng-view></div>
+
   
   <!-- <div ng-controller="testMap"><ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map></div> -->
 
@@ -32,15 +35,17 @@
   <script type="text/javascript" src="./javascripts/AppConstants.js"></script>
   <script type="text/javascript" src="./javascripts/AppConfig.js"></script>
 
-  <!-- <script type="text/javascript" src="./javascripts/services/AuthService.js"></script> -->
+  <script type="text/javascript" src="./javascripts/services/AuthService.js"></script>
+  <script type="text/javascript" src="./javascripts/services/PhotoService.js"></script>
 
-  <!-- <script type="text/javascript" src="./javascripts/controllers/DetailCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/EditCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/LoginCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/FavsCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/NewCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/ViewCtrl.js"></script> -->
-  <!-- <script type="text/javascript" src="./javascripts/controllers/NavCtrl.js"></script> -->
+
+  <script type="text/javascript" src="./javascripts/controllers/DetailCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/LoginCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/FavsCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/NavCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/MyphotoCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/NewCtrl.js"></script>
+  <script type="text/javascript" src="./javascripts/controllers/EditCtrl.js"></script>
 </body>
 
 </html>
