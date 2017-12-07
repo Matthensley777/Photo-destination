@@ -23,6 +23,8 @@ $scope.deletePhoto = (Id) => {
   $scope.photoDetail = (id) => {
     $location.path(`/detail/${id}`);
   };
-
+$scope.editDetail = (Id) => {
+    $location.path(`/edit/${Id}`);
+  };
 
 });

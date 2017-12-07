@@ -6,17 +6,17 @@ $scope.photo = {};
 
 const getPhotoDetails = () => {
         PhotoService.getSinglePhoto($routeParams.photoId).then((results) => {
-        	console.log("getPhotoDetails", results.data);
             $scope.photo = results.data;
+
         }).catch((err) => {
             console.log("getPhotoDetails", err);
         });
     };
     
 
-$scope.deletePhoto = (Id) => {
-    PhotoService.deletePhoto(Id).then((result) =>{
-     PhotoService.getMyPhotos();
+$scope.deletePhoto = () => {
+    PhotoService.deletePhoto($routeParams.photoId).then((results) =>{
+    	$location.path(`/photoview`);
     }).catch((err) =>{
       console.log("error in deletePhoto", err);
     });
@@ -24,4 +24,16 @@ $scope.deletePhoto = (Id) => {
 
 
 getPhotoDetails();
+
+$scope.editPhoto = (photo) => {
+        let editPhotos = PhotoService.editPhoto(photo);
+        PhotoService.editPhoto(editPhotos, photo, photo.id).then((results) => {
+        }).catch((err) => {
+            console.log("updateContact", err);
+        });
+    };
+
+$scope.editDetail = (photoId) => {
+    $location.path(`/edit/${$routeParams.photoId}`);
+  };
 });
