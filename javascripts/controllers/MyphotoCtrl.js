@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MyphotoCtrl", function($location, $rootScope, $scope, PhotoService) {
+app.controller("MyphotoCtrl", function($location, $rootScope, $scope, PhotoService, $routeParams) {
 
 const getUserPhotos = () => {
         PhotoService.getMyPhotos($rootScope.uid).then((results) => {
@@ -18,6 +18,10 @@ $scope.deletePhoto = (Id) => {
     }).catch((err) =>{
       console.log("error in deletePhoto", err);
     });
+  };
+
+  $scope.photoDetail = (id) => {
+    $location.path(`/detail/${id}`);
   };
 
 

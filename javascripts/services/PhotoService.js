@@ -37,6 +37,12 @@ const createImageDetails = (photo, uId) => {
         return $http.delete(`${FIREBASE_CONFIG.databaseURL}/photos/${Id}.json`);
     };
 
-	return {getMyPhotos, createImageDetails, postNewPhoto, deletePhoto};
+    const getSinglePhoto = (photoId) => {
+    return $http.get(`${FIREBASE_CONFIG.databaseURL}/photos/${photoId}.json`);
+};
+
+
+
+	return {getMyPhotos, createImageDetails, postNewPhoto, deletePhoto, getSinglePhoto};
 
 	});
