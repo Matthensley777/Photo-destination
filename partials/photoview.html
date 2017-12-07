@@ -1,8 +1,13 @@
 <div class="text-center" id="photoview">
 
+	<div class="input-group input-group-lg col-xs-6 col-xs-offset-3">
+		<span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true"></span>
+		<input type="text" class="form-control" placeholder="Find a movie" ng-model="searchText">
+	</div>
+
 	<h1>My Photos</h1>
 	<div id="photos">
-		<div ng-repeat="photo in photos" class="col-sm-6 col-md-4 photo">
+		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4 photo">
   			<div class="thumbnail">
   				<button class="btn btn-default delete" ng-click="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
   				<button class="btn btn-default detail" ng-click="photoDetail(photo.id)"><i class="fa fa-search"></i></button>
