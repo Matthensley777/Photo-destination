@@ -99,11 +99,6 @@ app.config(function($routeProvider){
       controller: 'FavsCtrl',
       resolve: {isAuth}
     })
-    .when("navbar", {
-      templateUrl: 'partials/navbar.html',
-      controller: 'NavCtrl',
-      resolve: {isAuth}
-    })
     .otherwise('/login');
 });
 

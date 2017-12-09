@@ -6,7 +6,7 @@ const getUserPhotos = () => {
         PhotoService.getMyPhotos($rootScope.uid).then((results) => {
             $scope.photos = results;
         }).catch((error) => {
-            console.log("Error in getMyPhotos", error);
+            console.log("Error in getUserPhotos", error);
         });
     };
 
