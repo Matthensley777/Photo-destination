@@ -1,0 +1,24 @@
+<div class="text-center" id="favs">
+
+	<div class="input-group input-group-lg col-xs-6 col-xs-offset-3">
+		<span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true"></span>
+		<input type="text" class="form-control" placeholder="Find a Photo" ng-model="searchText">
+	</div>
+
+	<h1>Favorites</h1>
+	<div id="photos">
+		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4 photo">
+  			<div class="thumbnail">
+  				<button class="btn btn-default detail" ng-click="photoDetail(photo.id)"><i class="fa fa-search"></i></button>
+  				<img class="image" ng-src="{{photo.img_path}}" alt="">
+ 					<h3 class="name">{{photo.name}}</h3>
+   						<p class="details">{{photo.details}}</p>
+   							<p class="city">{{photo.city}}</p>
+   								<button class="btn btn-default" ng-click="removeFromFavorites(photo.id)">Remove Photo From Favorites</button>
+			</div>
+		</div>
+	</div>
+
+	
+
+</div>

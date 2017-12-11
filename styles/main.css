@@ -1,2 +1,11 @@
 .thumbnail {
   height: 500px; }
+  .thumbnail .image {
+    height: 300px; }
+
+detailPhoto {
+  height: 900px;
+  width: 600px;
+  border: solid black 1px; }
+  detailPhoto .detailimage {
+    height: 600px; }

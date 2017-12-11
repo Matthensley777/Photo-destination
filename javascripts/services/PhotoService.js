@@ -19,26 +19,56 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
     };
 
     const allPhotos = () => {
-    	let userPhotos = [];
-    	return $q((resolve, reject) => {
-          $http.get(`${FIREBASE_CONFIG.databaseURL}/photos.json`).then((result) => {
-         	console.log("allPhotos in service", result.data);
-         	let allUserPhotos = result.data;
-         	Object.keys(allUserPhotos).forEach((key) => {
-         		allUserPhotos[key].id = key;
-         	userPhotos.push(allUserPhotos[key]);
-         	});
-            resolve(userPhotos);
-         }).catch((err) => {
-         	console.log("error in allPhotos", err);
-         });
-     });
+        let userPhotos = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/photos.json`).then((result) => {
+                let allUserPhotos = result.data;
+                Object.keys(allUserPhotos).forEach((key) => {
+                    allUserPhotos[key].id = key;
+                    userPhotos.push(allUserPhotos[key]);
+                });
+                resolve(userPhotos);
+            }).catch((err) => {
+                console.log("error in allPhotos", err);
+            });
+        });
+    };
+
+    const getUserPhotoFavorites = (uId) => {
+        let favoritePhotos = [];
+        return $q((resolve, reject) => {
+            $http.get(`${FIREBASE_CONFIG.databaseURL}/Favorites.json?orderBy="uId"&equalTo="${uId}"`).then((results) => {
+                let photosAddedToFavorite = results.data;
+                Object.keys(photosAddedToFavorite).forEach((favoriteId) => {
+                	let photoObject = photosAddedToFavorite[favoriteId];
+                	let photoId = photoObject.photoId;
+                    $http.get(`${FIREBASE_CONFIG.databaseURL}/photos/${photoId}.json`).then((photoResults) => {
+                    	console.log("photoResults", photoResults.data);
+                    	photoObject.name = photoResults.data.name;
+                    	photoObject.img_path = photoResults.data.img_path;
+                    	photoObject.details = photoResults.data.details;
+                    	photoObject.city = photoResults.data.city;
+                    	photoObject.uId = photoResults.data.uId;
+                    	favoritePhotos.push(photoObject);
+                        resolve(favoritePhotos);
+                	}).catch((err) => {
+                    	console.log("err1 in addUserPhotoToFavorites", err);
+                	});
+                });
+
+            	}).catch((error) => {
+                	console.log("error2 in addUserPhotoToFavorites", error);
+            });
+        });
     };
 
     const postNewPhoto = (newPhoto) => {
         return $http.post(`${FIREBASE_CONFIG.databaseURL}/photos.json`, JSON.stringify(newPhoto));
     };
 
+	const postNewFavorite = (newPhoto) => {
+        return $http.post(`${FIREBASE_CONFIG.databaseURL}/Favorites.json`, JSON.stringify(newPhoto));
+    };
 
     const createImageDetails = (photo, uId) => {
         return {
@@ -63,9 +93,9 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/photos/${Id}.json`, JSON.stringify(photo));
     };
 
-    // const removeUserPhotoFromFavorites = (photo) => {
-    // 	return $http.placeholder(`${FIREBASE_CONFIG.databaseURL}/photos/${photo}.json`, JSON.stringify(photo));
-    // };
+    const removeUserPhotoFromFavorites = (photo) => {
+    	return $http.delete(`${FIREBASE_CONFIG.databaseURL}/Favorites/${photo}.json`);
+    };
 
 
 
@@ -78,7 +108,10 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
         deletePhoto,
         getSinglePhoto,
         editPhoto,
-        allPhotos
+        allPhotos,
+        getUserPhotoFavorites,
+        removeUserPhotoFromFavorites,
+        postNewFavorite
     };
 
 });

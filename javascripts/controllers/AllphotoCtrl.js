@@ -1,10 +1,9 @@
 "use strict";
 
-app.controller("AllphotoCtrl", function($location, $rootScope, $scope, PhotoService) {
+app.controller("AllphotoCtrl", function($location, $rootScope, $scope, PhotoService, $routeParams) {
 
-const getAllUserPhotos = (photos) => {
-	PhotoService.allPhotos(photos).then((results) => {
-		console.log("results", results);
+    const getAllUserPhotos = (photos) => {
+        PhotoService.allPhotos($routeParams.photoId).then((results) => {
             $scope.userPhotos = results;
         }).catch((error) => {
             console.log("Error in getAllUserPhotos", error);
@@ -12,18 +11,26 @@ const getAllUserPhotos = (photos) => {
     };
 
 
- getAllUserPhotos();
+    getAllUserPhotos();
 
- // $scope.removeFromFavorites = () => {
- //    PhotoService.deletePhoto().then((result) =>{
- //      getAllUserPhotos();
- //    }).catch((err) =>{
- //      console.log("error in deletePhoto", err);
- //    });
- //  };
 
-$scope.photoDetail = (id) => {
-    $location.path(`/detail/${id}`);
-  };
+
+    $scope.addFavorite = (photoId) => {
+        let favoritePhoto = {uId:$rootScope.uid, photoId:photoId};
+        PhotoService.postNewFavorite(favoritePhoto).then(() => {
+          console.log("addFavorite");
+            getAllUserPhotos();
+            $location.path(`/favs/`);
+        }).catch((err) => {
+            console.log("error in addFavorite", err);
+        });
+
+    };
+
+    $scope.photoDetail = (id) => {
+        $location.path(`/detail/${id}`);
+    };
+
+
 
 });
