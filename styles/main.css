@@ -1,2 +1,4 @@
 .thumbnail {
   height: 500px; }
+  .thumbnail .image {
+    height: 300px; }
