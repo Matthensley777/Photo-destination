@@ -43,7 +43,6 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
                 	let photoObject = photosAddedToFavorite[favoriteId];
                 	let photoId = photoObject.photoId;
                     $http.get(`${FIREBASE_CONFIG.databaseURL}/photos/${photoId}.json`).then((photoResults) => {
-                    	console.log("photoResults", photoResults);
                     	if (photoResults.data) {
                     	photoObject.name = photoResults.data.name;
                     	photoObject.img_path = photoResults.data.img_path;
@@ -111,9 +110,7 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
     				}).catch((err) => {
     					console.log("err1 removeUserFavoritePhotoByPhotoId", err);
     				});
-    				// favoritedPhotos[key].id = key;
-    				// photos.push(favoritedPhotos);
-    				// resolve(photos);
+   
     			});
     		}).catch((err) => {
     			console.log("err2 in removeUserFavoritePhotoByPhotoId", err);

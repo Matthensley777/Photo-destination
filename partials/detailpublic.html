@@ -1,17 +1,11 @@
-<div class="text-center" id="detailpublic">
+<div class="text-center" id="detailpublic" ng-controller="DetailCtrl">
 
-	<div class="input-group input-group-lg col-xs-6 col-xs-offset-3">
-		<span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true"></span>
-		<input type="text" class="form-control" placeholder="Find a movie" ng-model="searchText">
-	</div>
+	
 
-	<h1>public photos</h1>
+	<h1>Details</h1>
 	<div id="photos">
-		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4 photo">
+		<div ng-repeat="photo in photos" class="col-sm-6 col-md-4 photo">
   			<div class="thumbnail">
-  				<button class="btn btn-default delete" ng-click="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
-  				<button class="btn btn-default detail" ng-click="photoDetail(photo.id)"><i class="fa fa-search"></i></button>
-  				<button class="btn btn-default" ng-click="editDetail(photo.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
   				<img class="image_path" ng-src="{{photo.img_path}}" alt="">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>

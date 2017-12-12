@@ -74,7 +74,7 @@ app.config(function($routeProvider){
       controller: 'DetailCtrl',
       resolve: {isAuth}
     })
-    .when("/detailpublic/:photoId", {
+    .when("/detailpublic/", {
       templateUrl: 'partials/detailpublic.html',
       controller: 'DetailCtrl',
       resolve: {isAuth}

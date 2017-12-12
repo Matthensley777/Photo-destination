@@ -14,14 +14,17 @@ app.controller("FavsCtrl", function($location, $rootScope, $scope, PhotoService,
     getFavoritePhotos();
 
     $scope.removeFromFavorites = (FavoriteId) => {
-      console.log("FavoriteId", FavoriteId);
         PhotoService.removeUserPhotoFromFavorites(FavoriteId).then((result) => {
-          console.log("removeFromFavorites", result);
           getFavoritePhotos();
             $location.path(`/favs/`);
         }).catch((err) => {
             console.log("error in removeUserPhotoFromFavorites", err);
         });
     };
+
+
+$scope.photoDetail = (id) => {
+    $location.path(`/detail/${id}`);
+  };
 
 });
