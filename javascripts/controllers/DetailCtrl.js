@@ -16,7 +16,10 @@ const getPhotoDetails = () => {
 
 $scope.deletePhoto = () => {
     PhotoService.deletePhoto($routeParams.photoId).then((results) =>{
-    	$location.path(`/photoview`);
+        PhotoService.removeUserFavoritePhotoByPhotoId($routeParams.photoId).then(()=> {
+            $location.path(`/photoview`);
+        });
+    	
     }).catch((err) =>{
       console.log("error in deletePhoto", err);
     });

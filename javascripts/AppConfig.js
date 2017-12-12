@@ -102,7 +102,6 @@ app.config(function($routeProvider){
     .otherwise('/login');
 });
 
-// });
 
 
 

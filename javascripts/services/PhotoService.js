@@ -43,12 +43,15 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
                 	let photoObject = photosAddedToFavorite[favoriteId];
                 	let photoId = photoObject.photoId;
                     $http.get(`${FIREBASE_CONFIG.databaseURL}/photos/${photoId}.json`).then((photoResults) => {
-                    	console.log("photoResults", photoResults.data);
+                    	console.log("photoResults", photoResults);
+                    	if (photoResults.data) {
                     	photoObject.name = photoResults.data.name;
                     	photoObject.img_path = photoResults.data.img_path;
                     	photoObject.details = photoResults.data.details;
                     	photoObject.city = photoResults.data.city;
                     	photoObject.uId = photoResults.data.uId;
+                    	photoObject.id = favoriteId;
+                    }
                     	favoritePhotos.push(photoObject);
                         resolve(favoritePhotos);
                 	}).catch((err) => {
@@ -93,11 +96,30 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
         return $http.put(`${FIREBASE_CONFIG.databaseURL}/photos/${Id}.json`, JSON.stringify(photo));
     };
 
-    const removeUserPhotoFromFavorites = (photo) => {
-    	return $http.delete(`${FIREBASE_CONFIG.databaseURL}/Favorites/${photo}.json`);
+    const removeUserPhotoFromFavorites = (FavoriteId) => {
+    	return $http.delete(`${FIREBASE_CONFIG.databaseURL}/Favorites/${FavoriteId}.json`);
     };
 
+    const removeUserFavoritePhotoByPhotoId = (photoId) => {
+    	let photos = [];
+    	return $q((resolve, reject) => {
+    		$http.get(`${FIREBASE_CONFIG.databaseURL}/Favorites.json?orderBy="photoId"&equalTo="${photoId}"`).then((results)=> {
+    			let favoritedPhotos = results.data;
+    			Object.keys(favoritedPhotos).forEach((key) => {
+    				$http.delete(`${FIREBASE_CONFIG.databaseURL}/Favorites/${key}.json`).then(()=> {
 
+    				}).catch((err) => {
+    					console.log("err1 removeUserFavoritePhotoByPhotoId", err);
+    				});
+    				// favoritedPhotos[key].id = key;
+    				// photos.push(favoritedPhotos);
+    				// resolve(photos);
+    			});
+    		}).catch((err) => {
+    			console.log("err2 in removeUserFavoritePhotoByPhotoId", err);
+    		});
+    	});
+    };
 
 
 
@@ -111,7 +133,8 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
         allPhotos,
         getUserPhotoFavorites,
         removeUserPhotoFromFavorites,
-        postNewFavorite
+        postNewFavorite,
+        removeUserFavoritePhotoByPhotoId
     };
 
 });

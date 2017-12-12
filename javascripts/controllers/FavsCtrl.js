@@ -1,26 +1,27 @@
 "use strict";
 
-app.controller("FavsCtrl", function($location, $rootScope, $scope, PhotoService) {
+app.controller("FavsCtrl", function($location, $rootScope, $scope, PhotoService, $routeParams) {
 
 
-const getFavoritePhotos = () => {
+    const getFavoritePhotos = () => {
         PhotoService.getUserPhotoFavorites($rootScope.uid).then((results) => {
-        	console.log("getFavoritePhotos", results);
             $scope.photos = results;
         }).catch((error) => {
             console.log("Error in getUserPhotos", error);
         });
     };
 
-getFavoritePhotos();
+    getFavoritePhotos();
 
-$scope.removeFromFavorites = () => {
-    PhotoService.removeUserPhotoFromFavorites().then((result) =>{
-      console.log("removeFromFavorites", result);
-      getFavoritePhotos();
-    }).catch((err) =>{
-      console.log("error in removeUserPhotoFromFavorites", err);
-    });
-  };
+    $scope.removeFromFavorites = (FavoriteId) => {
+      console.log("FavoriteId", FavoriteId);
+        PhotoService.removeUserPhotoFromFavorites(FavoriteId).then((result) => {
+          console.log("removeFromFavorites", result);
+          getFavoritePhotos();
+            $location.path(`/favs/`);
+        }).catch((err) => {
+            console.log("error in removeUserPhotoFromFavorites", err);
+        });
+    };
 
 });
