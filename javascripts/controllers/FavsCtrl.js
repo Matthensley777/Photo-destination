@@ -24,7 +24,6 @@ app.controller("FavsCtrl", function($location, $rootScope, $scope, PhotoService,
 
 
 $scope.photoDetail = (id) => {
-  console.log("id", id);
     $location.path(`/detailpublic/${id}`);
   };
 
