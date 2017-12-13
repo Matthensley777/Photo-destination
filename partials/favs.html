@@ -7,9 +7,9 @@
 
 	<h1>Favorites</h1>
 	<div id="photos">
-		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4 photo">
+		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4">
   			<div class="thumbnail">
-  				<button class="btn btn-default detail" ng-click="photoDetail(photo.id)"><i class="fa fa-search"></i></button>
+  				<button class="btn btn-default detail" ng-click="photoDetail(photo.photoId)"><i class="fa fa-search"></i></button>
   				<img class="image" ng-src="{{photo.img_path}}" alt="">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>

@@ -18,7 +18,6 @@ app.controller("AllphotoCtrl", function($location, $rootScope, $scope, PhotoServ
     $scope.addFavorite = (photoId) => {
         let favoritePhoto = {uId:$rootScope.uid, photoId:photoId};
         PhotoService.postNewFavorite(favoritePhoto).then(() => {
-          console.log("addFavorite");
             getAllUserPhotos();
             $location.path(`/favs/`);
         }).catch((err) => {
@@ -27,8 +26,9 @@ app.controller("AllphotoCtrl", function($location, $rootScope, $scope, PhotoServ
 
     };
 
-    $scope.photoDetail = (id) => {
-        $location.path(`/detail/${id}`);
+    $scope.photoDetail = (photoId) => {
+        console.log("photoId", photoId);
+        $location.path(`/detailpublic/${photoId}`);
     };
 
 

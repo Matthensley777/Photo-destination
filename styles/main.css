@@ -8,4 +8,5 @@ detailPhoto {
   width: 600px;
   border: solid black 1px; }
   detailPhoto .detailimage {
-    height: 600px; }
+    height: 900px;
+    width: 600px; }
