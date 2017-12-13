@@ -1,17 +1,15 @@
-<div class="text-center" id="detailpublic" ng-controller="DetailCtrl">
+<div class="text-center" id="detailpublic">
 
 	
 
 	<h1>Details</h1>
 	<div id="photos">
-		<div ng-repeat="photo in photos" class="col-sm-6 col-md-4 photo">
   			<div class="thumbnail">
   				<img class="image_path" ng-src="{{photo.img_path}}" alt="">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>
    							<p class="city">{{photo.city}}</p>
 			</div>
-		</div>
 	</div>
 
 	
