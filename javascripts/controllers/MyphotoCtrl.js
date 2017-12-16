@@ -15,6 +15,7 @@ getUserPhotos();
 $scope.deletePhoto = (Id) => {
     PhotoService.deletePhoto(Id).then((result) =>{
       PhotoService.removeUserFavoritePhotoByPhotoId($routeParams.photoId).then(()=> {
+        console.log("deletePhoto", $routeParams.photoId);
         getUserPhotos();
       }); 
     }).catch((err) =>{

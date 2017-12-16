@@ -27,7 +27,6 @@ app.controller("AllphotoCtrl", function($location, $rootScope, $scope, PhotoServ
     };
 
     $scope.photoDetail = (photoId) => {
-        console.log("photoId", photoId);
         $location.path(`/detailpublic/${photoId}`);
     };
 
