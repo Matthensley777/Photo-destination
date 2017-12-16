@@ -106,14 +106,17 @@ app.service("PhotoService", function($http, $q, FIREBASE_CONFIG) {
     			let favoritedPhotos = results.data;
     			Object.keys(favoritedPhotos).forEach((key) => {
     				$http.delete(`${FIREBASE_CONFIG.databaseURL}/Favorites/${key}.json`).then(()=> {
-
+                        resolve(photos);
     				}).catch((err) => {
     					console.log("err1 removeUserFavoritePhotoByPhotoId", err);
+                        reject(err);
     				});
-   
+                    
     			});
+                resolve(photos);
     		}).catch((err) => {
     			console.log("err2 in removeUserFavoritePhotoByPhotoId", err);
+                reject(err);
     		});
     	});
     };
