@@ -12,10 +12,10 @@ const getPhoto = () => {
     getPhoto();
 
 
-			$scope.updatePhotoDetails = (photo) => {
+			$scope.createNewPhoto = (photo) => {
                 let newPhoto = PhotoService.createImageDetails(photo, $rootScope.uid);
                 PhotoService.editPhoto(newPhoto, $routeParams.photoId).then((results)=> {
-                    $location.path('/detail');
+                    $location.path(`/detail/${$routeParams.photoId}`);
                 }).catch((err)=> {
                     console.log("err in updatePhoto", err);
                 });
