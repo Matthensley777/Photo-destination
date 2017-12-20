@@ -5,8 +5,8 @@
   			<div class="thumbnail">
   				<button class="btn btn-default"><i ng-click="editDetail(photo.id)" class="fa fa-pencil" aria-hidden="true"></i></button>
   				<button class="btn btn-default delete" ng-click="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
-  				<img class="detailimage" ng-src="{{photo.img_path}}" alt="">
- 					<h3 class="name">{{photo.name}}</h3>
+				<img data-ng-src="data:image/png;base64,{{photo.img_path.base64}}"> 					
+					<h3 class="name">{{photo.name}}</h3>
    						<p class="detils">{{photo.details}}</p>
    							<p class="city">{{photo.city}}</p>
 			</div>

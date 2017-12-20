@@ -1,11 +1,14 @@
 <body ng-app="validationApp" ng-controller="NewCtrl">
   <div>
-    <div>
+    <!-- <div>
       <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
       	<div class="form-group">
 	    <label for="formGroupExampleInput2">Image (source link to image)</label>
 	    <input type="text" class="form-control" ng-model="newPhoto.img_path"  placeholder="Link to image" required>
-	  </div>
+	  </div> -->
+        <div class="form-group">
+         <input type='file' ng-model='newPhoto.img_path' base-sixty-four-input>
+         </div>
         <div class="form-group">
           <label>
             Name:

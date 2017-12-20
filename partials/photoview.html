@@ -12,7 +12,7 @@
   				<button class="btn btn-default delete" ng-click="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
   				<button class="btn btn-default detail" ng-click="photoDetail(photo.id)"><i class="fa fa-search"></i></button>
   				<button class="btn btn-default" ng-click="editDetail(photo.id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-  				<img class="image" ng-src="{{photo.img_path}}" alt="">
+  				<img data-ng-src="data:image/png;base64,{{photo.img_path.base64}}">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>
    							<p class="city">{{photo.city}}</p>
