@@ -1,12 +1,14 @@
 .thumbnail {
   height: 500px; }
   .thumbnail .image {
-    height: 300px; }
+    height: 250px; }
 
-detailPhoto {
-  height: 900px;
-  width: 600px;
-  border: solid black 1px; }
-  detailPhoto .detailimage {
-    height: 900px;
-    width: 600px; }
+.noborder {
+  border: none; }
+
+.detailPhoto {
+  border: solid black 1px;
+  width: 900px;
+  height: 900px; }
+  .detailPhoto .detailimage {
+    height: 600px; }
