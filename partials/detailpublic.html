@@ -3,9 +3,9 @@
 	
 
 	<h1>Details</h1>
-	<div id="photos">
-  			<div class="thumbnail">
-  				<img class="image_path" ng-src="{{photo.img_path}}" alt="">
+	<div id="photos" class="detailPhoto">
+  			<div class="thumbnail noborder">
+  				<img class="detailimage" ng-src="data:image/png;base64,{{photo.img_path.base64}}" alt="">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>
    							<p class="city">{{photo.city}}</p>

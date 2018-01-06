@@ -10,7 +10,7 @@
 		<div ng-repeat="photo in photos | filter: searchText" class="col-sm-6 col-md-4">
   			<div class="thumbnail">
   				<button class="btn btn-default detail" ng-click="photoDetail(photo.photoId)"><i class="fa fa-search"></i></button>
-  				<img class="image" ng-src="{{photo.img_path}}" alt="">
+  				<img class="image" data-ng-src="data:image/png;base64,{{photo.img_path.base64}}" alt="">
  					<h3 class="name">{{photo.name}}</h3>
    						<p class="details">{{photo.details}}</p>
    							<p class="city">{{photo.city}}</p>
